@@ -46,9 +46,22 @@ function login(creds) {
 }
 
 
+function getProfile(username){
+  // console.log(username, "USERNAME")
+  return fetch(BASE_URL + username, {
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => {
+    if(res.ok) return res.json();
+    throw new Error('Bad Credentials')
+  })
+}
+
 export default {
   signup, 
   logout,
   login,
-  getUser
+  getUser,
+  getProfile
 };

@@ -4,7 +4,8 @@ import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
-
+import ProfilePage from '../ProfilePage/ProfilePage';
+import Feed from '../Feed/Feed';
 
 function App() {
 
@@ -34,8 +35,12 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                    Home PAGE COMPONENT WOULD GO HEREE
+                    <Feed user={user} handleLogout={handleLogout}/>
                 </Route>
+                <Route path="/:username">
+                  <ProfilePage user={user} handleLogout={handleLogout}/>
+                </Route>
+
             </Switch>
             </>
             :

@@ -8,7 +8,8 @@ const s3 = new S3(); // initialize the construcotr
 
 module.exports = {
   signup,
-  login
+  login,
+  profile
 };
 
 function signup(req, res) {
@@ -44,8 +45,9 @@ function signup(req, res) {
 
 async function login(req, res) {
   try {
+    //config by email, if want to change, do that here
     const user = await User.findOne({email: req.body.email});
-    console.log(user, ' this user in login')
+    console.log(user, ' this user is logged in')
     if (!user) return res.status(401).json({err: 'bad credentials'});
     // had to update the password from req.body.pw, to req.body password
     user.comparePassword(req.body.password, (err, isMatch) => {
@@ -59,6 +61,21 @@ async function login(req, res) {
     });
   } catch (err) {
     return res.status(401).json(err);
+  }
+}
+
+async function profile(req, res){
+  try {
+    // First find the user using the params from the request
+    // findOne finds first match, its useful to have unique usernames!
+    const user = await User.findOne({username: req.params.username})
+    // Then find all the posts that belong to that user
+    const posts = await Post.find({user: user._id});
+    console.log(posts, ' this posts')
+    res.status(200).json({posts: posts, user: user})
+  } catch(err){
+    console.log(err)
+    res.send({err})
   }
 }
 
