@@ -15,6 +15,7 @@ export default function PostFeed({posts, numPhotosCol, isProfile, addRsvp, remov
                             post={post} 
                             key={post._id} 
                             isProfile={isProfile} 
+                            // rsvps={rsvps}
                             addRsvp={addRsvp}  
                             removeRsvp={removeRsvp}
                             />

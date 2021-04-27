@@ -28,6 +28,7 @@ function create(req, res){
                 title: req.body.title,
                 photoUrl: data.Location, 
                 user: req.user,
+                event_type: req.body.event_type,
                 start_date: req.body.start_date,
                 end_date: req.body.end_date
 

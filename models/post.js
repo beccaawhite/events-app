@@ -10,6 +10,7 @@ const postSchema = new mongoose.Schema({
     photoUrl: String,
     title: String,
     caption: String,
+    event_type: String,
     rsvp: [rsvpSchema],
     start_date: Date,
     end_date: Date

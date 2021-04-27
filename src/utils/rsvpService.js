@@ -9,7 +9,7 @@ export function create(postId){
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
           }
-    }).then(res => res.join())
+    }).then(res => res.json())
 }
 
 export function removeRsvp(rsvpId){
@@ -19,5 +19,5 @@ export function removeRsvp(rsvpId){
         headers: {
             'Authorization': 'Bearer ' + tokenService.getToken()
           }
-    }).then(res => res.join())
+    }).then(res => res.json())
 }

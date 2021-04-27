@@ -79,22 +79,7 @@ export default function Feed({user, handleLogout}){
             <AddPost handleAddPost={handleAddPost}/>
           </Grid.Column>
         </Grid.Row>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
+       
       
         <Grid.Row>
           <Grid.Column style={{maxWidth: 450}}>
@@ -103,6 +88,7 @@ export default function Feed({user, handleLogout}){
               posts={posts}  
               numPhotosCol={1} 
               isProfile={false} 
+              isRsvp={false}
               addRsvp={addRsvp} 
               removeRsvp={removeRsvp}
               />

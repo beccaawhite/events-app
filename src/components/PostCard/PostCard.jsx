@@ -20,6 +20,7 @@ function PostCard({post, isProfile, addRsvp, removeRsvp, user }) {
 
 
   return (
+
     <Card key={post._id}>
      {isProfile ? ''
         :  
@@ -32,34 +33,47 @@ function PostCard({post, isProfile, addRsvp, removeRsvp, user }) {
               />
               <Card.Header floated="right">{post.user.username}</Card.Header>
           </Card.Content>
-      
       }
+
+    
+
+
       <Image src={`${post.photoUrl}`} wrapped ui={false} />
       <Card.Content>
       <Card.Description>
-        {post.title}
+        Event name: {post.title}
       </Card.Description>
       </Card.Content>
 
       <Card.Content>
         <Card.Description>
-          {post.caption}
+          Type of Event: {post.event_type}
         </Card.Description>
       </Card.Content>
 
       <Card.Content>
         <Card.Description>
-          {post.start_date} - {post.end_date}
+          Event descrription: {post.caption}
+        </Card.Description>
+      </Card.Content>
+
+      <Card.Content>
+        <Card.Description>
+          Date(s): {post.start_date} - {post.end_date}
         </Card.Description>
       </Card.Content>
      
 
       <Card.Content extra textAlign={'right'}>
-        <Icon name={'heart'} size='large' onClick={clickHandler} color={likeColor} />
+        <Icon name={'star'} size='large' onClick={clickHandler} color={likeColor} />
         {post.rsvp.length} Rsvp's
           
       </Card.Content>
     </Card>
+
+
+
+
   );
 }
 

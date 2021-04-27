@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import userService from '../../utils/userService';
+
+
+import rsvpService from '../../utils/rsvpService';
+
+
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
 import PageHeader from '../../components/Header/Header';
@@ -11,6 +16,7 @@ export default function ProfilePage({ user, handleLogout }) {
 
     const [posts, setPosts] = useState([])
     const [profileUser, setProfileUser] = useState({})
+    // const [rsvps, setRsvps] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
@@ -51,6 +57,8 @@ export default function ProfilePage({ user, handleLogout }) {
             console.log(data, "DATA IS HEREEEEE")
             setLoading(() => false)
             setPosts(() => [...data.posts])
+            // setRsvps(() => [...data.rsvps])
+            // data.userRsvp
             setProfileUser(() => data.user)
         } catch (err) {
             console.log(err, "THIS IS A PROFILE ERROR HERE")
@@ -59,11 +67,12 @@ export default function ProfilePage({ user, handleLogout }) {
     }
 
 
+
+
     
 
     useEffect(() => {
         getProfile()
-
     }, [])
 
 
@@ -95,9 +104,27 @@ export default function ProfilePage({ user, handleLogout }) {
                     </Grid.Row>
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
+                        <h4>My created events:</h4><hr/>
                             <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} addRsvp={addRsvp} removeRsvp={removeRsvp} />
                         </Grid.Column>
+                        {/* add cal to this row ?? */}
                     </Grid.Row>
+
+        
+                    {/* work on this */}
+                    <Grid.Row centered>
+                        <Grid.Column style={{ maxWidth: 750 }}>
+                        <h4>My RSVP events:</h4><hr/>
+
+                        
+                            {/* <PostFeed  rsvps={rsvps} numPhotosCol={3} user={user} addRsvp={addRsvp} removeRsvp={removeRsvp} /> */}
+                    
+
+                        </Grid.Column>
+        
+                    </Grid.Row>
+
+
                 </Grid>
             }
         </>

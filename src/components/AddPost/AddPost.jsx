@@ -6,6 +6,7 @@ export default function AddPuppyForm(props){
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState] = useState({
     caption: '',
+    event_type: '',
     start_date: '',
     end_date: ''
   })
@@ -38,7 +39,9 @@ export default function AddPuppyForm(props){
     const formData = new FormData()
     formData.append('photo', selectedFile)
     formData.append('caption', state.caption)
+    // of title error, look here. was title.title
     formData.append('title', title.title)
+    formData.append('event_type', state.event_type)
     formData.append('start_date', state.start_date)
     formData.append('end_date', state.end_date)    
     // Have to submit the form now! We need a function!
@@ -48,7 +51,7 @@ export default function AddPuppyForm(props){
 
   return (
     
-    <Grid textAlign='center' style={{ height: '25vh' }} verticalAlign='middle'>
+    <Grid textAlign='center' verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Segment>
         
@@ -72,6 +75,15 @@ export default function AddPuppyForm(props){
                   onChange={handleChange}
                   required
               />   
+
+              <Form.Input
+                  className="form-control"
+                  name="event_type"
+                  value={state.event_type}
+                  placeholder="Enter type of event"
+                  onChange={handleChange}
+                  required
+              /> 
 
               <Form.Input
                   className="form-control"

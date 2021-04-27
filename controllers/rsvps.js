@@ -5,11 +5,12 @@ module.exports = {
     deleteRsvp
 }
 
-async function create(req, res){
+async function create(req, res, isRsvp){
  
     try {
         const post = await Post.findById(req.params.id);
         post.rsvp.push({username: req.user.username, userId: req.user._id}); //mutating a document
+        post.isRsvp = true
         await post.save()// save it
         res.status(201).json({data: 'like added'})
     } catch(err){
