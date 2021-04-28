@@ -2,15 +2,16 @@ import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-function PostCard({post, isProfile, addRsvp, removeRsvp, user }) { 
+export default function PostCard({post, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
 
   // as the logged in the user when I add a like I want the heart to turn red
   // find out if the logged in user has liked the card
+  // if they have, add it to their profile
 
-  //post.rsvp might be error
+  
   const likedIndexNumber = post.rsvp.findIndex(rsvp => rsvp.username === user.username);
-  // if one of the likes in post.likes is has the same username as are logged in user
-  // it will return the index of that particular object in the post.likes array
+  // if one of the rsvps in post.rsvp is has the same username as are logged in user
+  // it will return the index of that particular object in the post.rsvp array
   // if not it will return -1
 
   const clickHandler = likedIndexNumber > - 1 ? () => removeRsvp(post.rsvp[likedIndexNumber]._id) : () => addRsvp(post._id);
@@ -18,6 +19,12 @@ function PostCard({post, isProfile, addRsvp, removeRsvp, user }) {
   // as the logged in the user when I click on the heart and it is red I want 
   // to remove the like and turn heart grey
 
+  function handleRsvp(user, post){
+    while (likedIndexNumber > -1){
+      user.rsvpEvent.push(post)
+    }
+
+  }
 
   return (
 
@@ -34,6 +41,8 @@ function PostCard({post, isProfile, addRsvp, removeRsvp, user }) {
               <Card.Header floated="right">{post.user.username}</Card.Header>
           </Card.Content>
       }
+
+      
 
     
 
@@ -76,5 +85,3 @@ function PostCard({post, isProfile, addRsvp, removeRsvp, user }) {
 
   );
 }
-
-export default PostCard;

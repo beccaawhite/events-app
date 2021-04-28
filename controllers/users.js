@@ -70,15 +70,27 @@ async function profile(req, res){
     // First find the user using the params from the request
     // findOne finds first match, its useful to have unique usernames!
     const user = await User.findOne({username: req.params.username})
-    // find all posts userid but key 
-
-    // const rsvp = await Post.findById({rsvp: posts.rsvp._id})
-
+   
     // Then find all the posts that belong to that user
     const posts = await Post.find({user: user._id});
-    console.log(posts, ' this posts')
-    res.status(200).json({posts: posts, user: user})
-    // , rsvp: rsvp ABOVE , rsvp: rsvp
+    // console.log(posts, ' this posts')
+
+    const allPosts = await Post.find()
+    const test = allPosts.filter(post => {
+      const currentUserId = user._id
+      const doesUserIdExist = post.rsvp.some((rsvpObj) => {
+        // console.log( String(currentUserId) == String(rsvpObj.userId))
+        return String(currentUserId) == String(rsvpObj.userId)
+      })
+
+      if (doesUserIdExist){
+        return post
+      } 
+    })
+    console.log(test, " test from controller")
+
+    res.status(200).json({posts: posts, user: user, rsvpEvents: test})
+    
   } catch(err){
     console.log(err)
     res.send({err})

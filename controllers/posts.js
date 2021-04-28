@@ -7,11 +7,12 @@ const BUCKET_NAME = process.env.BUCKET_NAME
 
 module.exports = {
     create,
-    index
+    index,
+    deletePost
 }
 
 
-function create(req, res){
+async function create(req, res){
     // confirm we access to our multipart/formdata request
     console.log(req.body, req.file, req.user, "<req.user is being assinged in the config/auth middleware");
 
@@ -67,3 +68,13 @@ async function index(req, res){
         res.json(err)
     }
 }
+
+async function deletePost(req, res){
+    try {
+        await Post.findByIdAndDelete(req.params.id);
+        res.json({data: 'post deleted'})
+    } catch(err){
+        res.json({error: err})
+    }
+}
+

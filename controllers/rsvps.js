@@ -10,8 +10,14 @@ async function create(req, res, isRsvp){
     try {
         const post = await Post.findById(req.params.id);
         post.rsvp.push({username: req.user.username, userId: req.user._id}); //mutating a document
-        post.isRsvp = true
+
+        // when the user creates a 
+        // const rsvpEvent = await Post.findById({rsvp: posts.rsvp._id})
+        // rsvpEvent = true
+        // console.log(rsvpEvent, "RSVPEVENT FROM CONTROLLER")
+
         await post.save()// save it
+        await rsvpEvent.save()
         res.status(201).json({data: 'like added'})
     } catch(err){
        

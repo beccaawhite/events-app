@@ -36,6 +36,10 @@ export default function Feed({user, handleLogout}){
       }
     }
 
+    async function deletePost(){
+
+    }
+
 
     async function handleAddPost(post){
         console.log('handle add Post')
@@ -88,7 +92,8 @@ export default function Feed({user, handleLogout}){
               posts={posts}  
               numPhotosCol={1} 
               isProfile={false} 
-              isRsvp={false}
+              isRsvpEvent={false}
+              deletePost={deletePost}
               addRsvp={addRsvp} 
               removeRsvp={removeRsvp}
               />
