@@ -11,7 +11,7 @@ export default function AddPuppyForm(props){
     end_date: ''
   })
   const [title, setTitle] = useState({
-    title: '',
+    title: ''
   })
 
   function handleFileInput(e){
@@ -46,6 +46,21 @@ export default function AddPuppyForm(props){
     formData.append('end_date', state.end_date)    
     // Have to submit the form now! We need a function!
     props.handleAddPost(formData)
+
+    // after form is submitted, empty the state
+    // when these are commented in, the post validation fails
+    // setState({
+    //   caption: '',
+    //   event_type: '',
+    //   start_date: '',
+    //   end_date: ''
+    // })
+  
+    // setTitle({
+    //   title: ''
+    // })
+
+
   }
 
 

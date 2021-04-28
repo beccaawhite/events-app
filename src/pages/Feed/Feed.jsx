@@ -36,8 +36,14 @@ export default function Feed({user, handleLogout}){
       }
     }
 
-    async function deletePost(){
-
+    async function deletePost(postId){
+      try{  
+        const data = await postsApi.deletePost(postId);
+        console.log(data, ' response from deletePost')
+        getPosts()
+      } catch(err){
+        console.log(err)
+      }
     }
 
 
@@ -67,6 +73,7 @@ export default function Feed({user, handleLogout}){
 
       useEffect(() => {
         getPosts()
+      
       }, [])
 
 

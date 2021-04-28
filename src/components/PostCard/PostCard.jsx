@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-export default function PostCard({post, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
+export default function PostCard({post, deletePost, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
 
   // as the logged in the user when I add a like I want the heart to turn red
   // find out if the logged in user has liked the card
@@ -19,12 +19,16 @@ export default function PostCard({post, isProfile, isRsvpEvent, addRsvp, removeR
   // as the logged in the user when I click on the heart and it is red I want 
   // to remove the like and turn heart grey
 
-  function handleRsvp(user, post){
-    while (likedIndexNumber > -1){
-      user.rsvpEvent.push(post)
-    }
+  // function handleRsvp(user, post){
+  //   while (likedIndexNumber > -1){
+  //     user.rsvpEvent.push(post)
+  //   }
 
-  }
+  // }
+   
+  const handleDeletePost = () => deletePost(post._id)
+
+  
 
   return (
 
@@ -78,6 +82,12 @@ export default function PostCard({post, isProfile, isRsvpEvent, addRsvp, removeR
         {post.rsvp.length} Rsvp's
           
       </Card.Content>
+
+      <Card.Content extra textAlign={'center'} style={{backgroundColor: "black"}}>
+        <Icon name={'trash'} size='large' color={"red"} onClick={handleDeletePost}/>
+      </Card.Content>
+
+
     </Card>
 
 

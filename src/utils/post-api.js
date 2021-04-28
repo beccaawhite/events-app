@@ -34,3 +34,5 @@ export function deletePost(postId){
     }
   }).then(res => res.json())
 }
+
+

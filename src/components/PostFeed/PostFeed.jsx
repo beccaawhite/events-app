@@ -3,7 +3,7 @@ import { Card  } from 'semantic-ui-react'
 import PostCard from '../PostCard/PostCard';
 
 
-export default function PostFeed({posts, numPhotosCol, isRsvpEvent, isProfile, addRsvp, removeRsvp, user  }){
+export default function PostFeed({posts, deletePost, numPhotosCol, isRsvpEvent, isProfile, addRsvp, removeRsvp, user  }){
 
     return (
         <Card.Group itemsPerRow={numPhotosCol} stackable>
@@ -13,6 +13,7 @@ export default function PostFeed({posts, numPhotosCol, isRsvpEvent, isProfile, a
                     <>
                         <PostCard 
                             user={user}
+                            deletePost={deletePost}
                             post={post} 
                             key={post._id} 
                             isProfile={isProfile} 

@@ -62,8 +62,6 @@ export default function ProfilePage({ user, handleLogout }) {
             setLoading(() => false)
             setPosts(() => [...data.posts])
             setRsvpEvents(() => [...data.rsvpEvents])
-            // setRsvps(() => [...data.rsvps])
-            // data.userRsvp
             setProfileUser(() => data.user)
 
         } catch (err) {
@@ -71,16 +69,6 @@ export default function ProfilePage({ user, handleLogout }) {
             setError(err)
         }
     }
-
-    // posts.map((post) => {
-
-    //     if(rsvp.username === user.username)
-    // }
-
-    // const arr = post.rsvp.findIndex((rsvp) => rsvp.username === user.username)
-
-
-    // const likedIndexNumber = posts.rsvp.findIndex(rsvp => rsvp.username === user.username);
 
 
 
