@@ -26,8 +26,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
     console.log(location)
 
 
-    
-
     // use this for rsvp
     async function addRsvp(postId){
         try {
@@ -51,7 +49,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
 
 
     async function getProfile() {
-
         try {
 
             const username = location.pathname.substring(1)
@@ -77,8 +74,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
         console.log(updatedUser)
       }
 
-
-    
 
     useEffect(() => {
         getProfile()
@@ -107,6 +102,13 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                         </Grid.Column>
                     </Grid.Row>
 
+
+                    <Grid.Row>
+                        <Grid.Column>
+                            <ProfileBio user={profileUser} />
+                        </Grid.Column>
+                    </Grid.Row>
+
                     <Grid.Row>
                         <Grid.Column>
                             <UpdateProfilePhotoForm 
@@ -115,33 +117,16 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                         </Grid.Column>
                     </Grid.Row>
 
-                    <Grid.Row>
-                        <Grid.Column>
-                            <ProfileBio user={profileUser} />
-                        </Grid.Column>
-                    </Grid.Row>
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
                         <h4>My created events:</h4><hr/>
                             <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} addRsvp={addRsvp} removeRsvp={removeRsvp} />
                         </Grid.Column>
 
-            
-
-                        {/* add cal to this row ?? */}
                     </Grid.Row>
 
             
 
-
-
-                    {/* { likedIndexNumber > -1 ? <p>working</p> : <p>working but false</p>
-
-                    } */}
-
-
-        
-                    {/* work on this */}
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
                         <h4>My RSVP events:</h4><hr/>
@@ -156,17 +141,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                             
                         />
       
-
-                        {/* {user.id = posts.rsvp   ? 
-                            <h1>Hello</h1>
-
-                            : <h1>Hey now</h1>
-                        } */}
-
-
-                        
-                            {/* <PostFeed  rsvps={rsvps} numPhotosCol={3} user={user} addRsvp={addRsvp} removeRsvp={removeRsvp} /> */}
-                    
 
                         </Grid.Column>
         

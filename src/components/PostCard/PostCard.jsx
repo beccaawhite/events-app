@@ -8,6 +8,7 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
   // find out if the logged in user has liked the card
   // if they have, add it to their profile
 
+  // const loggedInUser = post.find(post => post.user._id === user._id)
   
   const likedIndexNumber = post.rsvp.findIndex(rsvp => rsvp.username === user.username);
   // if one of the rsvps in post.rsvp is has the same username as are logged in user
@@ -46,6 +47,10 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
           </Card.Content>
       }
 
+
+
+
+
       
 
     
@@ -83,6 +88,12 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
           
       </Card.Content>
 
+
+      {/* conditional logic */}
+
+      { post.user._id == user._id ? 
+      <>
+    
       <Card.Content extra textAlign={'center'} style={{backgroundColor: "grey"}}>
         <Icon name={'trash'} size='large' color={"black"} onClick={handleDeletePost}/>
       </Card.Content>
@@ -91,15 +102,10 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
         {/* <Link to={`/edit/${post._id}`}><Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
         </Link> */}
         <Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
-
-
-
-
-        {/* <Route path="edit/:id">
-                  <EditPost user={user} handleLogout={handleLogout}/>
-                </Route> */}
-        
       </Card.Content>
+      </>
+      : ''
+    }
 
 
     </Card>

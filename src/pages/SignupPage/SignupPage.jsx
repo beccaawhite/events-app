@@ -111,7 +111,7 @@ export default function SignUpPage(props){
                       onChange={handleChange}
                       required
                     />
-                    <Form.TextArea label='bio' placeholder='Tell us more about your dogs...' name="bio" onChange={handleChange}/>
+                    <Form.TextArea label='bio' placeholder='Tell us more about you...' name="bio" onChange={handleChange}/>
                     <Form.Field> 
                         <Form.Input
                           type="file"

@@ -11,7 +11,7 @@ export default function UpdateProfilePhotoForm(props){
   function handleFileInput(e){
     setSelectedFile(e.target.files[0])
   }
-  
+
   function handleSubmit(e){
     e.preventDefault()
     console.log('is handlesUbmit being called?')
@@ -36,7 +36,7 @@ export default function UpdateProfilePhotoForm(props){
                   onChange={handleFileInput}
               /> 
               <Button
-                color="green"
+                color="pink"
                 inverted
                 type="submit"
                 className="btn"
