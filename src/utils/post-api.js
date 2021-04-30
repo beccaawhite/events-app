@@ -2,7 +2,7 @@ import tokenService from './tokenService';
 
 // This matches up with the app.use('/api/posts') in the server.js
 // Where all our post api routes will live
-const BASE_URL = '/api/posts';
+const BASE_URL = '/api/posts/';
 
 export function create(post){
   console.log(post, 'in create')
