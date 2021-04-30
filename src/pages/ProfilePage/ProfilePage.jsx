@@ -108,14 +108,22 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                             <ProfileBio user={profileUser} />
                         </Grid.Column>
                     </Grid.Row>
+                     
+                    {/* WORK ON PROFILE PIC EDIT CONDITIONAL */}
 
-                    <Grid.Row>
-                        <Grid.Column>
-                            <UpdateProfilePhotoForm 
-                            handleUpdateProfilePhoto={handleUpdateProfilePhoto}
-                             />
-                        </Grid.Column>
-                    </Grid.Row>
+                    {/* { user._id == user._id
+                        ? 
+                        <Grid.Row>
+                            <Grid.Column>
+                                <UpdateProfilePhotoForm 
+                                handleUpdateProfilePhoto={handleUpdateProfilePhoto}
+                                />
+                            </Grid.Column>
+                        </Grid.Row>
+                        
+                        : 
+                        ''
+                    } */}
 
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>

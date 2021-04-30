@@ -1,8 +1,33 @@
+// import React, { useState, useEffect } from 'react'
+import PageHeader from '../../components/Header/Header';
+// import AddPost from '../../components/AddPost/AddPost'
+// import PostFeed from '../../components/PostFeed/PostFeed'
+// import EditPostForm from '../../components/EditPostForm/EditPostForm'
+// import * as postsApi from '../../utils/post-api'
+// import * as rsvpApi from '../../utils/rsvpService';
+
+// import {  Grid } from 'semantic-ui-react'
+
+// export default function AddEvent({user, handleLogout}){
+
+
+//     return (
+//         <AddPost />
+//     )
+
+// }
+
+
+
+
 import React, { useState } from 'react';
+import * as postsApi from '../../utils/post-api'
 
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
+import { useHistory } from 'react-router-dom'
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 
-export default function AddPuppyForm(props){
+export default function AddEvent({user, handleLogout}){
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState] = useState({
     caption: '',
@@ -13,11 +38,12 @@ export default function AddPuppyForm(props){
   const [title, setTitle] = useState({
     title: ''
   })
+  const history = useHistory();
+  const [error, setError] = useState('');
 
   function handleFileInput(e){
     setSelectedFile(e.target.files[0])
   }
-
 
   function handleChange(e){
     setState({
@@ -30,47 +56,53 @@ export default function AddPuppyForm(props){
     })
   }
 
-  function handleSubmit(e){
+  async function handleSubmit(e){
     e.preventDefault()
     console.log('is handlesUbmit being called?')
 
-    // Why do we need to create FormData
-    // what type of request are we making?
     const formData = new FormData()
     formData.append('photo', selectedFile)
-    formData.append('caption', state.caption)
-    // of title error, look here. was title.title
-    formData.append('title', title.title)
-    formData.append('event_type', state.event_type)
-    formData.append('start_date', state.start_date)
-    formData.append('end_date', state.end_date)    
-    // Have to submit the form now! We need a function!
-    props.handleAddPost(formData)
 
-    // after form is submitted, empty the state
-    // setState({
-    //   caption: '',
-    //   event_type: '',
-    //   start_date: '',
-    //   end_date: ''
-    // })
-  
-    // setTitle({
-    //   title: ''
-    // })
+    for (let key in state){
+        formData.append(key, state[key]);
+    }
 
-
+    // formData.append('caption', state.caption)
+    // formData.append('title', title.title)
+    // formData.append('event_type', state.event_type)
+    // formData.append('start_date', state.start_date)
+    // formData.append('end_date', state.end_date)    
+    console.log("FORM DATA HERE: ", formData)
+    try {
+      await postsApi.create(formData);
+      console.log("FORM DATA NEW: ", formData)
+      history.push('/');
+    }
+    catch(err){
+      console.log(err.message)
+    //   setError(err.message)
+    }
   }
 
 
   return (
     
     <Grid textAlign='center' verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 450 }}>
-        <Segment>
-        
+
+
+        {/* <Grid.Row>
+          <Grid.Column>
+            <PageHeader user={user} handleLogout={handleLogout}/>
+          </Grid.Column>
+        </Grid.Row> */}
+    
+
+      <Grid.Column >
+        <PageHeader user={user} handleLogout={handleLogout} />
+
+        <Segment >
             <Form  autoComplete="off" onSubmit={handleSubmit}>
-            
+            <h2>New Event</h2>
 
               <Form.Input
                   className="form-control"
@@ -134,6 +166,10 @@ export default function AddPuppyForm(props){
               </Button>
             </Form>
           </Segment>
+
+          {error ? <ErrorMessage error={error} /> : null}
+
+          
       </Grid.Column>
     </Grid>
    
