@@ -89,7 +89,7 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
       </Card.Content>
 
 
-      {/* conditional logic */}
+      
       { post.user._id == user._id ? 
       <>
     

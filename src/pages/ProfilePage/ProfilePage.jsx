@@ -109,10 +109,8 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                         </Grid.Column>
                     </Grid.Row>
                      
-                    {/* WORK ON PROFILE PIC EDIT CONDITIONAL */}
-
-                    {/* { user._id == user._id
-                        ? 
+                     
+                    { user._id == profileUser._id ? 
                         <Grid.Row>
                             <Grid.Column>
                                 <UpdateProfilePhotoForm 
@@ -120,10 +118,9 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                                 />
                             </Grid.Column>
                         </Grid.Row>
-                        
-                        : 
-                        ''
-                    } */}
+                    :
+                    '' 
+                    }
 
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
