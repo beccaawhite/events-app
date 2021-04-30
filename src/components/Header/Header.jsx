@@ -13,6 +13,10 @@ export default function PageHeader({user, handleLogout}){
             <Header as='h2' floated='left'>
                 <Link to={`/${user.username}`}><Image src={user.photoUrl ? user.photoUrl : "https://react.semantic-ui.com/images/wireframe/square-image.png"} avatar></Image></Link>          
             </Header>
+            <Header as='h2' floated='left'>
+                <Link to='' exact path='/add' >Add Event</Link>         
+            </Header>
+
         </Segment>
     )
 }

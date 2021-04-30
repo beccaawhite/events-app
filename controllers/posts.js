@@ -8,7 +8,9 @@ const BUCKET_NAME = process.env.BUCKET_NAME
 module.exports = {
     create,
     index,
-    deletePost
+    deletePost,
+    show,
+    editPost
 }
 
 
@@ -76,5 +78,66 @@ async function deletePost(req, res){
     } catch(err){
         res.json({error: err})
     }
+}
+
+async function show(req, res){
+    try{
+        const post = await Post.findById(req.params.id);
+        res.status(200).json({post});
+
+    } catch(err){
+        console.log(err);
+        res.send({err});
+    }
+}
+
+
+// function for updating post info, very similar to the create
+async function editPost(req, res){
+    console.log("EDIT FUNC: ", req.body)
+    // const updatedPost = await Post.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    // res.status(200).json(updatedPost);
+    // try {
+    //     // maybe finding it wrong
+    //     const post = await Post.findById({_id: req.post._id});
+    //     console.log(post,'post is here')
+        
+    //     post.title = req.body.title,
+    //     post.caption = req.body.caption, 
+    //     post.photoUrl = data.Location, 
+    //     post.user = req.user,
+    //     post.event_type = req.body.event_type,
+    //     post.start_date = req.body.start_date,
+    //     post.end_date = req.body.end_date
+
+        
+    //     await post.save();
+    //     const token = createJWT(post);
+    //     res.json({ token })
+    
+    //   } catch(err){
+    //     return res.status(400).json(err);
+    //   }
+
+
+  
+        // confirm we access to our multipart/formdata request
+        const filePath = `${uuidv4()}${req.file.originalname}`
+        const params = {Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer};
+        s3.upload(params, async function(err, data){
+          console.log(data, err, 'from aws'); // data.Location is our photoUrl that exists on aws
+          try {
+            const updatedPost = await Post.findOneAndUpdate({_id: req.user._id}, 
+            {photoUrl: data.Location}, {new: true});
+            console.log(updatedPost);
+            const token = createJWT(updatedPost); // user is the payload so this is the object in our jwt
+            res.json({ token });
+          } catch (err) {
+            // Probably a duplicate email
+            console.log(err);
+            res.status(400).json(err);
+          }
+        })
+      
 }
 

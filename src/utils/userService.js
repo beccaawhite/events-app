@@ -58,10 +58,29 @@ function getProfile(username){
   })
 }
 
+function updateProfilePhoto(photo) {
+  return fetch(BASE_URL, {
+    method: 'PUT',
+    body: photo,
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  })
+  .then(res => {
+    if(res.ok) return res.json();
+    throw new Error('Bad Credentials!')
+  })
+  .then(({token}) => tokenService.setToken(token));
+}
+
+
+
+
 export default {
   signup, 
   logout,
   login,
   getUser,
-  getProfile
+  getProfile,
+  updateProfilePhoto
 };

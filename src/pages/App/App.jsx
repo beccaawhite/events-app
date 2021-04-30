@@ -5,6 +5,7 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService'
 import ProfilePage from '../ProfilePage/ProfilePage';
+import EditPost from '../EditPost/EditPost'
 import Feed from '../Feed/Feed';
 
 function App() {
@@ -35,13 +36,21 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                    <Feed user={user} handleLogout={handleLogout}/>
+                  <Feed user={user} handleLogout={handleLogout}/>
                 </Route>
                 <Route path="/:username">
-                  <ProfilePage user={user} handleLogout={handleLogout}/>
+                  <ProfilePage 
+                    user={user} 
+                    handleLogout={handleLogout}
+                    handleSignUpOrLogin={handleSignUpOrLogin}
+                    />
                 </Route>
+                {/* <Route exact path="/edit">
+                  <EditPost user={user} handleLogout={handleLogout}/>
+                </Route> */}
 
-            </Switch>
+
+             </Switch>
             </>
             :
             <Redirect to='/login'/>

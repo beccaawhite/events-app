@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
 
-export default function PostCard({post, deletePost, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
+export default function PostCard({post, deletePost, editpost, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
 
   // as the logged in the user when I add a like I want the heart to turn red
   // find out if the logged in user has liked the card
@@ -83,8 +83,22 @@ export default function PostCard({post, deletePost, isProfile, isRsvpEvent, addR
           
       </Card.Content>
 
-      <Card.Content extra textAlign={'center'} style={{backgroundColor: "black"}}>
-        <Icon name={'trash'} size='large' color={"red"} onClick={handleDeletePost}/>
+      <Card.Content extra textAlign={'center'} style={{backgroundColor: "grey"}}>
+        <Icon name={'trash'} size='large' color={"black"} onClick={handleDeletePost}/>
+      </Card.Content>
+
+      <Card.Content extra textAlign={'center'} style={{backgroundColor: "pink"}}>
+        {/* <Link to={`/edit/${post._id}`}><Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
+        </Link> */}
+        <Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
+
+
+
+
+        {/* <Route path="edit/:id">
+                  <EditPost user={user} handleLogout={handleLogout}/>
+                </Route> */}
+        
       </Card.Content>
 
 

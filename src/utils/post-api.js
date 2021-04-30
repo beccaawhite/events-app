@@ -36,3 +36,26 @@ export function deletePost(postId){
 }
 
 
+// post or postId
+export function editPost(post){
+  return fetch(`${BASE_URL}/${post._id}`, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json())
+
+}
+
+
+export function getPost(postId){
+
+    return fetch(BASE_URL + `${postId}`, {
+        headers: {
+          'Authorization': 'Bearer ' + tokenService.getToken()
+        }
+      }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Bad Credentials')
+      })
+}

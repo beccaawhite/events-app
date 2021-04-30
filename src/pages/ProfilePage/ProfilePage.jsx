@@ -12,8 +12,9 @@ import RsvpEvents from '../../components/RsvpEvents/RsvpEvents';
 import PageHeader from '../../components/Header/Header';
 import * as rsvpApi from '../../utils/rsvpService';
 import { useLocation } from 'react-router-dom';
+import UpdateProfilePhotoForm from '../../components/UpdateProfilePhotoForm/UpdateProfilePhotoForm';
 
-export default function ProfilePage({ user, handleLogout }) {
+export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin }) {
 
     const [posts, setPosts] = useState([])
     const [profileUser, setProfileUser] = useState({})
@@ -70,13 +71,18 @@ export default function ProfilePage({ user, handleLogout }) {
         }
     }
 
+    async function handleUpdateProfilePhoto (photo){
+        const updatedUser = await userService.updateProfilePhoto(photo);
+        handleSignUpOrLogin()
+        console.log(updatedUser)
+      }
 
 
     
 
     useEffect(() => {
         getProfile()
-    }, [])
+    }, [user])
 
 
 
@@ -100,6 +106,15 @@ export default function ProfilePage({ user, handleLogout }) {
                             <PageHeader user={user} handleLogout={handleLogout}/>
                         </Grid.Column>
                     </Grid.Row>
+
+                    <Grid.Row>
+                        <Grid.Column>
+                            <UpdateProfilePhotoForm 
+                            handleUpdateProfilePhoto={handleUpdateProfilePhoto}
+                             />
+                        </Grid.Column>
+                    </Grid.Row>
+
                     <Grid.Row>
                         <Grid.Column>
                             <ProfileBio user={profileUser} />

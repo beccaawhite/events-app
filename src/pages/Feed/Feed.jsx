@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PageHeader from '../../components/Header/Header';
 import AddPost from '../../components/AddPost/AddPost'
 import PostFeed from '../../components/PostFeed/PostFeed'
+import EditPostForm from '../../components/EditPostForm/EditPostForm'
 import * as postsApi from '../../utils/post-api'
 import * as rsvpApi from '../../utils/rsvpService';
 
@@ -61,6 +62,7 @@ export default function Feed({user, handleLogout}){
         }
     }
 
+    // get all posts
     async function getPosts(){
     
         try {
@@ -76,22 +78,55 @@ export default function Feed({user, handleLogout}){
       
       }, [])
 
+      // async function editPost(state){
+      //   console.log(" !!!! edit post in feed")
+      //     try {
+      //         await postService.editPost(state);
+      //         handleLogout()
+      //     } catch(err){
+      //         setError(err)
+      //     }
+      // }
+
+      async function getOnePost(){
+        console.log(" get the post!!! ")
+      }
+
 
 
     return (
       <Grid centered >
+
         <Grid.Row>
           <Grid.Column>
             <PageHeader user={user} handleLogout={handleLogout}/>
           </Grid.Column>
         </Grid.Row>
+
         <Grid.Row>
           <Grid.Column style={{ maxWidth: 450 }}>
             <AddPost handleAddPost={handleAddPost}/>
           </Grid.Column>
         </Grid.Row>
+
+        <Grid.Row>
+          <Grid.Column style={{ maxWidth: 450 }}>
+            {/* <EditPostForm 
+              user={user}
+              posts={posts}  
+              numPhotosCol={1} 
+              isProfile={false} 
+              isRsvpEvent={false}
+              deletePost={deletePost}
+              editpost={editPost}
+              getonepost={getOnePost}
+              addRsvp={addRsvp} 
+              removeRsvp={removeRsvp} 
+            
+            /> */}
+          </Grid.Column>
+        </Grid.Row>
        
-      
         <Grid.Row>
           <Grid.Column style={{maxWidth: 450}}>
             <PostFeed 
@@ -103,9 +138,11 @@ export default function Feed({user, handleLogout}){
               deletePost={deletePost}
               addRsvp={addRsvp} 
               removeRsvp={removeRsvp}
+              // editpost={editPost}
               />
           </Grid.Column>
         </Grid.Row>
+
     </Grid>
     )
 }
