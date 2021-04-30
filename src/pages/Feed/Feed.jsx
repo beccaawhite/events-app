@@ -103,14 +103,9 @@ export default function Feed({user, handleLogout}){
           </Grid.Column>
         </Grid.Row>
 
-        <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
-            <AddPost handleAddPost={handleAddPost}/>
-          </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
-          <Grid.Column style={{ maxWidth: 450 }}>
+    
+        {/* <Grid.Row>
+          <Grid.Column style={{ maxWidth: 450 }}> */}
             {/* <EditPostForm 
               user={user}
               posts={posts}  
@@ -124,8 +119,8 @@ export default function Feed({user, handleLogout}){
               removeRsvp={removeRsvp} 
             
             /> */}
-          </Grid.Column>
-        </Grid.Row>
+          {/* </Grid.Column>
+        </Grid.Row> */}
        
         <Grid.Row>
           <Grid.Column style={{maxWidth: 450}}>
