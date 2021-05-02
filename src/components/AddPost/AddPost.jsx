@@ -103,7 +103,7 @@ export default function AddPuppyForm(props){
                   className="form-control"
                   name="start_date"
                   value={state.start_date}
-                  placeholder="Enter start date"
+                  placeholder="Enter start date, i.e. 02-05-2022"
                   onChange={handleChange}
                   required
               /> 
@@ -112,7 +112,7 @@ export default function AddPuppyForm(props){
                   className="form-control"
                   name="end_date"
                   value={state.end_date}
-                  placeholder="Enter end date"
+                  placeholder="Enter end date, i.e. 02-07-2022"
                   onChange={handleChange}
                   required
               /> 

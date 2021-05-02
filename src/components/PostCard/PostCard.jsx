@@ -60,14 +60,14 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
 
       <Image src={`${post.photoUrl}`} wrapped ui={false} />
       <Card.Content>
-      <Card.Description>
-        Event name: {post.title}
-      </Card.Description>
+      <Card.Header>
+        {post.title}
+      </Card.Header>
       </Card.Content>
 
       <Card.Content>
         <Card.Description>
-          Type of Event: {post.event_type}
+          {post.event_type} event
         </Card.Description>
       </Card.Content>
 

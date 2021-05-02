@@ -41,7 +41,7 @@ export default function UpdateProfilePhotoForm(props){
                 type="submit"
                 className="btn"
                 >
-                Update Picta!
+                Update Picture!
               </Button>
             </Form>
           </Segment>

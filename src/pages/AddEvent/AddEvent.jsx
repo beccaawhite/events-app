@@ -1,5 +1,6 @@
 // import React, { useState, useEffect } from 'react'
 import PageHeader from '../../components/Header/Header';
+import './AddEvent.css';
 // import AddPost from '../../components/AddPost/AddPost'
 // import PostFeed from '../../components/PostFeed/PostFeed'
 // import EditPostForm from '../../components/EditPostForm/EditPostForm'
@@ -66,12 +67,7 @@ export default function AddEvent({user, handleLogout}){
     for (let key in state){
         formData.append(key, state[key]);
     }
-
-    // formData.append('caption', state.caption)
-    // formData.append('title', title.title)
-    // formData.append('event_type', state.event_type)
-    // formData.append('start_date', state.start_date)
-    // formData.append('end_date', state.end_date)    
+   
     console.log("FORM DATA HERE: ", formData)
     try {
       await postsApi.create(formData);
@@ -86,22 +82,18 @@ export default function AddEvent({user, handleLogout}){
 
 
   return (
+    <div className="AddEvent">
+
     
-    <Grid textAlign='center' verticalAlign='middle'>
+    <Grid textAlign='center' verticalAlign='middle' >
 
-
-        {/* <Grid.Row>
-          <Grid.Column>
-            <PageHeader user={user} handleLogout={handleLogout}/>
-          </Grid.Column>
-        </Grid.Row> */}
     
 
       <Grid.Column >
         <PageHeader user={user} handleLogout={handleLogout} />
 
         <Segment >
-            <Form  autoComplete="off" onSubmit={handleSubmit}>
+            <Form  autoComplete="off" onSubmit={handleSubmit} className="EventForm">
             <h2>New Event</h2>
 
               <Form.Input
@@ -135,7 +127,7 @@ export default function AddEvent({user, handleLogout}){
                   className="form-control"
                   name="start_date"
                   value={state.start_date}
-                  placeholder="Enter start date"
+                  placeholder="Enter start date, i.e. 02-06-2022"
                   onChange={handleChange}
                   required
               /> 
@@ -144,7 +136,7 @@ export default function AddEvent({user, handleLogout}){
                   className="form-control"
                   name="end_date"
                   value={state.end_date}
-                  placeholder="Enter end date"
+                  placeholder="Enter end date, i.e. 02-07-2022"
                   onChange={handleChange}
                   required
               /> 
@@ -172,6 +164,7 @@ export default function AddEvent({user, handleLogout}){
           
       </Grid.Column>
     </Grid>
+    </div>
    
   ); 
 }
