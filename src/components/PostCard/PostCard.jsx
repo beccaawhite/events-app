@@ -99,11 +99,11 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
         <Icon name={'trash'} size='large' color={"black"} onClick={handleDeletePost}/>
       </Card.Content>
 
-      <Card.Content extra textAlign={'center'} style={{backgroundColor: "pink"}}>
+      {/* <Card.Content extra textAlign={'center'} style={{backgroundColor: "pink"}}> */}
         {/* <Link to={`/edit/${post._id}`}><Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
         </Link> */}
-        <Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
-      </Card.Content>
+        {/* <Icon name={'edit'} editpost={editpost} size='large' color={"grey"} /> */}
+      {/* </Card.Content> */}
       </>
       : ''
     }
