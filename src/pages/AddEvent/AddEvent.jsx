@@ -1,29 +1,7 @@
-// import React, { useState, useEffect } from 'react'
 import PageHeader from '../../components/Header/Header';
 import './AddEvent.css';
-// import AddPost from '../../components/AddPost/AddPost'
-// import PostFeed from '../../components/PostFeed/PostFeed'
-// import EditPostForm from '../../components/EditPostForm/EditPostForm'
-// import * as postsApi from '../../utils/post-api'
-// import * as rsvpApi from '../../utils/rsvpService';
-
-// import {  Grid } from 'semantic-ui-react'
-
-// export default function AddEvent({user, handleLogout}){
-
-
-//     return (
-//         <AddPost />
-//     )
-
-// }
-
-
-
-
 import React, { useState } from 'react';
 import * as postsApi from '../../utils/post-api'
-
 import { Button, Form, Grid, Segment } from 'semantic-ui-react'
 import { useHistory } from 'react-router-dom'
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
@@ -84,7 +62,6 @@ export default function AddEvent({user, handleLogout}){
   return (
     <div className="AddEvent">
 
-    
     <Grid textAlign='center' verticalAlign='middle' >
 
     
@@ -93,8 +70,8 @@ export default function AddEvent({user, handleLogout}){
         <PageHeader user={user} handleLogout={handleLogout} />
 
         <Segment >
-            <Form  autoComplete="off" onSubmit={handleSubmit} className="EventForm">
-            <h2>New Event</h2>
+            <Form  autoComplete="off" onSubmit={handleSubmit} className="EventForm" >
+            <div className="headers">New Event</div>
 
               <Form.Input
                   className="form-control"

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Button, Form, Grid, Header, Image, Segment, Message } from 'semantic-ui-react'
 import userService from '../../utils/userService';
+import {Link} from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import './SignupPage.css';
 
@@ -73,12 +74,12 @@ export default function SignUpPage(props){
     
     return (
         <>
-        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+        <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' className="container">
           <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
+              <div as='h2' color='teal' textAlign='center' className="headers title">
                 {/* <Image src='' />  */}
                 Sign Up    
-              </Header>            
+              </div>            
                 <Form autoComplete="off"  onSubmit={handleSubmit}>
                 <Segment stacked>               
                     <Form.Input                    
@@ -119,15 +120,20 @@ export default function SignUpPage(props){
                           name="photo"
                           placeholder="upload image"
                           onChange={handleFileInput}
+                          
                         />      
                     </Form.Field>
                     <Button
                       type="submit"
                       className="btn"
+                      color="yellow"
                       disabled={invalidForm}
                     >
                     Signup
                   </Button>
+                  <br/>
+                  <br/>
+                  <Link to="/login">Back to Login</Link>           
                   </Segment>
                   {error ? <ErrorMessage error={error} /> : null}
                 </Form>

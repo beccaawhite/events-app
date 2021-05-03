@@ -3,25 +3,6 @@ import {Link} from 'react-router-dom';
 import { Header, Segment, Image, Icon, Dropdown } from 'semantic-ui-react';
 
 
-const options = [
-    {
-        key: 'add event',
-        text: 'Add Event',
-        icon: 'add',
-        as: Link, to: '/add'
-        // image: {}
-    },
-    {
-        key: 'my profile',
-        text: 'My profile'
-        // image: {}
-    },
-    {
-        key: 'logout',
-        text: 'Logout'
-        // image: {}
-    }
-]
 
 export default function PageHeader({user, handleLogout}){
     return (
