@@ -4,21 +4,27 @@ import {  Image, Grid, Segment } from 'semantic-ui-react';
 
 function ProfileBio({user}) { 
   return (
-  <Grid textAlign='center' columns={2}>
+  <Grid textAlign='center' columns={1} maxWidth="100px">
     <Grid.Row>
-      <Grid.Column>
+      <Grid.Column className="profile">
+
+        <div vertical className="headers">
+            <div>{user.username}'s Profile</div>
+        </div>
+
+        <div className="italized">
+           <span > 
+             "{user.bio}"
+           </span>
+        </div>
+
         <Image src={`${user.photoUrl ? user.photoUrl : "https://react.semantic-ui.com/images/wireframe/square-image.png"} `} avatar size='small' />
+
       </Grid.Column>
       <Grid.Column textAlign="left" style={{ maxWidth: 450 }}>
-        <Segment vertical>
-           <h3>{user.username}</h3>
-        </Segment>
+       
     
-        <Segment>
-           <span> 
-             "{user.bio}" <br/> -{user.username}
-           </span>
-        </Segment>
+        
           
       </Grid.Column>
     </Grid.Row>

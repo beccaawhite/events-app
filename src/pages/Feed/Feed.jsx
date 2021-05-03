@@ -5,6 +5,7 @@ import PostFeed from '../../components/PostFeed/PostFeed'
 import EditPostForm from '../../components/EditPostForm/EditPostForm'
 import * as postsApi from '../../utils/post-api'
 import * as rsvpApi from '../../utils/rsvpService';
+import './Feed.css';
 
 import {  Grid } from 'semantic-ui-react'
 

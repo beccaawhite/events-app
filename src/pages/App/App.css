@@ -3,6 +3,10 @@
   font-family: 'Julius Sans One', sans-serif;
 }
 
+.headers {
+  font-size: 1.5em;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,4 +40,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.updatePicture :hover {
+  background-color: #EFE2BA;
 }

@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Segment, Dimmer, Loader } from 'semantic-ui-react'
 import userService from '../../utils/userService';
-
-
+import './ProfilePage.css';
 import rsvpService from '../../utils/rsvpService';
-
 import Calendar from '../../components/Calendar/Calendar';
 import ProfileBio from '../../components/ProfileBio/ProfileBio';
 import PostFeed from '../../components/PostFeed/PostFeed';
@@ -88,11 +86,8 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle' >
                 
                         <Grid.Column style={{ maxWidth: 450}}>
-                            
-                                <Loader size='large' active>Loading</Loader>
-                         
-                        </Grid.Column>
-                 
+                                <Loader size='large' active>Loading</Loader> 
+                        </Grid.Column>        
                 </Grid>
                 :
                 <Grid>
@@ -109,7 +104,7 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                         </Grid.Column>
                     </Grid.Row>
                      
-                     
+
                     { user._id == profileUser._id ? 
                         <Grid.Row>
                             <Grid.Column>
@@ -124,39 +119,39 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
 
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                        <h4>My created events:</h4><hr/>
+                        <div className="headers center">My created events</div><hr/>
                             <PostFeed isProfile={true} posts={posts} numPhotosCol={3} user={user} addRsvp={addRsvp} removeRsvp={removeRsvp} />
                         </Grid.Column>
 
                     </Grid.Row>
 
-            
-
+                    
+                    { rsvpEvents.length ? 
+                    
                     <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
-                        <h4>My RSVP events:</h4><hr/>
-                        <RsvpEvents 
-                            isProfile={true} 
-                            rsvpEvents={rsvpEvents}
-                            posts={posts}
-                            numPhotosCol={3} 
-                            user={user} 
-                            addRsvp={addRsvp} 
-                            removeRsvp={removeRsvp} 
-                            
-                        />
-      
-
+                        <div className="headers center">My RSVP events</div><hr/>
+                            <RsvpEvents 
+                                isProfile={true} 
+                                rsvpEvents={rsvpEvents}
+                                posts={posts}
+                                numPhotosCol={3} 
+                                user={user} 
+                                addRsvp={addRsvp} 
+                                removeRsvp={removeRsvp}    
+                            />
                         </Grid.Column>
-        
                     </Grid.Row>
 
-                    <Grid.Row centered>
+                    : ''
+                    }
+
+                    {/* come back and add calendar functionality */}
+                    {/* <Grid.Row centered>
                         <Grid.Column style={{ maxWidth: 750 }}>
                                 <Calendar />
                         </Grid.Column>
-
-                    </Grid.Row>
+                    </Grid.Row> */}
 
 
                 </Grid>

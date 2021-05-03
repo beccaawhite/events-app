@@ -24,11 +24,11 @@ export default function UpdateProfilePhotoForm(props){
   }
 
   return (
-    <Grid textAlign='left' verticalAlign='middle'>
+    <Grid textAlign='left' verticalAlign='middle' centered>
     <Grid.Row>
       <Grid.Column style={{ maxWidth: 200 }}>
-        <Segment clearing style={{backgroundColor: "black"}}>
-            <Form  autoComplete="off" onSubmit={handleSubmit}>
+        <Segment clearing style={{backgroundColor: "#4056A1"}}>
+            <Form  autoComplete="off" onSubmit={handleSubmit} >
               <Form.Input
                   type='file'
                   name='photo'
@@ -36,10 +36,10 @@ export default function UpdateProfilePhotoForm(props){
                   onChange={handleFileInput}
               /> 
               <Button
-                color="pink"
+                color="#EFE2BA"
                 inverted
                 type="submit"
-                className="btn"
+                className="btn updatePicture"
                 >
                 Update Picture!
               </Button>

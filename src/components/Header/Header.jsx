@@ -27,9 +27,10 @@ export default function PageHeader({user, handleLogout}){
     return (
         <>
 
-        <Segment clearing>
-            <Header as='h2' floated='right'>
-            <Dropdown text={`welcome, ${user.username}`} >
+        <Segment clearing className="headers">
+            <Header as='h3' floated='right'>
+            <Dropdown text={`Welcome, ${user.username}`} >
+                
                 <Dropdown.Menu >
                     <Dropdown.Item>
                         <Link to="/"><Icon name="home"> Home</Icon></Link>

@@ -36,35 +36,39 @@ export default function RsvpCard({posts, rsvpPost, isProfile, isRsvpEvent, addRs
 
         <Image src={`${rsvpPost.photoUrl}`} wrapped ui={false} />
         <Card.Content>
-          <Card.Description>
-            Event name: {rsvpPost.title}
-          </Card.Description>
-        </Card.Content>
 
-        <Card.Content>
-          <Card.Description>
-            Type of Event: {rsvpPost.event_type}
+          <Card.Description className="headers">
+            {rsvpPost.title}
           </Card.Description>
-        </Card.Content>
 
-        <Card.Content>
-          <Card.Description>
-            Event descrription: {rsvpPost.caption}
+          <hr/>
+
+          <Card.Description className="italized">
+            {rsvpPost.event_type} event
           </Card.Description>
-        </Card.Content>
 
-        <Card.Content>
+          <Card.Description>
+            Details: {rsvpPost.caption}
+          </Card.Description>
+
           <Card.Description>
             Date(s): {start} - {end}
           </Card.Description>
-        </Card.Content>
-      
 
-        <Card.Content extra textAlign={'right'}>
+          <Card.Content extra textAlign={'right'}>
           <Icon name={'star'} size='large' onClick={clickHandler} color={likeColor} />
           {rsvpPost.rsvp.length} Rsvp's
             
         </Card.Content>
+
+        </Card.Content>
+
+    
+
+
+        
+
+  
       </>
 
       {/* :  // nothing
