@@ -3,15 +3,6 @@
 Eventime was created for the purpose to discover new and exciting events coming up. With this app, you are able to make an account and create event postings. Other users can then see the event and rsvp which adds to the total rsvp list. You can see other users profiles with the intent to make new connections.
 
 
-
-### ERD 
-<img src="eventERD.png">
-
-### Wireframes 
-<img src="feed_page.png">
-<img src="profile_page.png">
-
-
 ### Log in
 Create your account or log in to get started
 <img src="login.png">
@@ -22,6 +13,12 @@ Create your account or log in to get started
 ### Profile Page
 <img src="profile_example.png">
 
+### ERD 
+<img src="eventERD.png">
+
+### Wireframes 
+<img src="feed_page.png">
+<img src="profile_page.png">
 
 
 
@@ -38,7 +35,7 @@ Create your account or log in to get started
 
 [View my trello board here](https://trello.com/b/4P2jw59L/project-4)
 
-[Click here to launch events](https://socialeventapp.herokuapp.com/)
+[Click here to launch Eventime](https://socialeventapp.herokuapp.com/)
 
 ## Next Steps
 - Edit more features such as post details or users bio
