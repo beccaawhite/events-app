@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Icon, Image, Feed } from 'semantic-ui-react'
 import { Link } from 'react-router-dom';
+import './PostCard.css';
 
 export default function PostCard({post, deletePost, editpost, isProfile, isRsvpEvent, addRsvp, removeRsvp, user }) { 
 
@@ -29,11 +30,13 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
    
   const handleDeletePost = () => deletePost(post._id)
 
-  
+  const start = post.start_date.slice(0, 10)
+  const end = post.end_date.slice(0, 10)
 
   return (
+  
 
-    <Card key={post._id}>
+    <Card key={post._id} className="PostCard">
      {isProfile ? ''
         :  
           <Card.Content textAlign='left'>
@@ -43,7 +46,7 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
                   avatar
                   src={post.user.photoUrl ? post.user.photoUrl : 'https://react.semantic-ui.com/images/wireframe/square-image.png'}
               />
-              <Link style={{color: 'brown'}} to={`/${post.user.username}`}>
+              <Link style={{color: '#4056A1'}} to={`/${post.user.username}`}>
                 <Card.Header floated="right">{post.user.username}</Card.Header>
               </Link>
           </Card.Content>
@@ -79,7 +82,7 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
 
       <Card.Content>
         <Card.Description>
-          Date(s): {post.start_date} - {post.end_date}
+          Date(s): {start} - {end}
         </Card.Description>
       </Card.Content>
      
@@ -95,10 +98,11 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
       { post.user._id == user._id ? 
       <>
     
-      <Card.Content extra textAlign={'center'} style={{backgroundColor: "grey"}}>
+      <Card.Content extra textAlign={'center'} style={{backgroundColor: "#D79922"}}>
         <Icon name={'trash'} size='large' color={"black"} onClick={handleDeletePost}/>
       </Card.Content>
 
+      {/* edit form temporarily removed until able to fully implement  */}
       {/* <Card.Content extra textAlign={'center'} style={{backgroundColor: "pink"}}> */}
         {/* <Link to={`/edit/${post._id}`}><Icon name={'edit'} editpost={editpost} size='large' color={"grey"} />
         </Link> */}
@@ -108,10 +112,8 @@ export default function PostCard({post, deletePost, editpost, isProfile, isRsvpE
       : ''
     }
 
-
     </Card>
-
-
+  
 
 
   );

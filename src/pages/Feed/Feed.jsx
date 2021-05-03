@@ -48,20 +48,6 @@ export default function Feed({user, handleLogout}){
     }
 
 
-    // async function handleAddPost(post){
-    //     console.log('handle add Post')
-    //     try {
-            
-    //         const data = await postsApi.create(post, " POST")
-    //         console.log(data, ' the response from the create route')
-
-    //         setPosts(posts => [...posts, data.post])
-
-    //     } catch(err){
-    //         console.log(err)
-    //     }
-    // }
-
     // get all posts
     async function getPosts(){
     

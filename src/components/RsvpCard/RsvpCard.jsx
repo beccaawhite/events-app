@@ -10,6 +10,8 @@ export default function RsvpCard({posts, rsvpPost, isProfile, isRsvpEvent, addRs
   const clickHandler = likedIndexNumber > - 1 ? () => removeRsvp(rsvpPost.rsvp[likedIndexNumber]._id) : () => addRsvp(rsvpPost._id);
   const likeColor = likedIndexNumber > -1 ? 'red' : 'grey';
  
+  const start = rsvpPost.start_date.slice(0, 10)
+  const end = rsvpPost.end_date.slice(0, 10)
 
   return (
 
@@ -53,7 +55,7 @@ export default function RsvpCard({posts, rsvpPost, isProfile, isRsvpEvent, addRs
 
         <Card.Content>
           <Card.Description>
-            Date(s): {rsvpPost.start_date} - {rsvpPost.end_date}
+            Date(s): {start} - {end}
           </Card.Description>
         </Card.Content>
       
